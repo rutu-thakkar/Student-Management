@@ -39,9 +39,25 @@ exports.addmarks = (req, res) => {
     });
 }
 
-exports.viewAllResults = (req,res) => {
+exports.viewAllResults = (req, res) => {
     db.result.findAll().then((data) => {
         res.send(data);
+    }).catch((error) => {
+        res.send("error : " + error)
+    })
+}
+
+exports.viewResultByEnroll = (req, res) => {
+    db.result.findAll({
+        where: {
+            enrollNo: req.params.enrollNo
+        }
+    }).then((data) => {
+        if (Object.keys(data).length === 0) {
+            res.send("No data Found");
+        } else {
+            res.send(data)
+        }
     }).catch((error) => {
         res.send("error : " + error)
     })
