@@ -38,3 +38,11 @@ exports.addmarks = (req, res) => {
         res.send("Error : " + error)
     });
 }
+
+exports.viewAllResults = (req,res) => {
+    db.result.findAll().then((data) => {
+        res.send(data);
+    }).catch((error) => {
+        res.send("error : " + error)
+    })
+}
