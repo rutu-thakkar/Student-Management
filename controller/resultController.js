@@ -1,3 +1,4 @@
+const res = require("express/lib/response");
 const db = require("../models")
 
 exports.addmarks = (req, res) => {
@@ -62,3 +63,22 @@ exports.viewResultByEnroll = (req, res) => {
         res.send("error : " + error)
     })
 }
+
+//view Result of a student classwise
+exports.viewResultByEnrollAndClass = (req, res) => {
+    db.result.findAll({
+        where: {
+            class: req.body.class,
+            enrollNo: req.body.enrollNo
+        }
+    }).then((data) => {
+        if (Object.keys(data).length === 0) {
+            res.send("no data found")
+        } else {
+            res.send(data)
+        }
+    }).catch((error) => {
+        res.send("error : " + error)
+    })
+}
+
