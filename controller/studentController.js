@@ -155,13 +155,28 @@ exports.deleteStudent = (req, res) => {
         if (!data) {
             res.send("No Student found")
         } else {
-            db.student.destroy({
+            db.result.findOne({
                 where: {
-                    enrollNo: req.params.enrollNo
+                    enrollNo: data.enrollNo
                 }
-            }).then((result) => {
-                res.send(result + " Data deleted!")
+            }).then((resultdata) => {
+                if (!resultdata) {
+                    db.student.destroy({
+                        where: {
+                            enrollNo: req.params.enrollNo
+                        }
+                    }).then((result) => {
+                        res.send(result + " Data deleted!")
+                    }).catch((error) => {
+                        res.send("error : " + error);
+                    })
+                } else {
+                    res.send("Data Can't be deleted as result of this student is stored");
+                }
+            }).catch((error) => {
+                res.send("error : " + error);
             })
+
         }
     })
 }
