@@ -14,7 +14,7 @@ route.get('/login', (req, res) => {
     res.render('login')
 })
 
-route.post('/login', student.studentLogin);
+route.post('/loggedin', student.studentLogin);
 
 route.get('/getStudentByEnroll/:enrollNo', student.getStudentByEnroll);
 
