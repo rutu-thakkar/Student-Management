@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 
 route.use(cookieParser())
 
+route.get('/', student.home)
 route.get('/register', (req, res) => {
     res.render('register')
 })

@@ -7,6 +7,10 @@ const cookieParser = require('cookie-parser')
 
 app.use(cookieParser());
 
+exports.home = (req, res) => {
+    res.render('login');
+}
+
 exports.getLoginPage = (req, res) => {
     res.render('login');
 }
