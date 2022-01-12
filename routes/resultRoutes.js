@@ -7,6 +7,6 @@ route.get('/viewAllResults', result.viewAllResults);
 route.get('/viewResultByEnroll/:enrollNo', result.viewResultByEnroll);
 route.get('/viewResultByClass', result.viewResultByEnrollAndClass);
 route.get('/viewResultSemesterWise', result.viewResultSemesterWise);
-
+route.delete('/deleleResult', result.deleteResult)
 
 module.exports = route

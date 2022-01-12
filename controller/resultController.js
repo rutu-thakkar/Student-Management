@@ -100,3 +100,36 @@ exports.viewResultSemesterWise = (req, res) => {
         res.send("Error : " + error)
     })
 }
+
+// delete result 
+exports.deleteResult = (req, res) => {
+    db.result.findOne({
+        where: {
+            enrollNo: req.body.enrollNo,
+            class: req.body.class,
+            semester: req.body.semester
+        }
+    }).then((data) => {
+        if (!data) {
+            res.send("No data Found.");
+        } else {
+            db.result.destroy({
+                where: {
+                    enrollNo: data.enrollNo,
+                    class: data.class,
+                    semester: data.semester
+                }
+            }).then((data) => {
+                if (data) {
+                    res.send(data + " Data Deleted");
+                } else {
+                    res.send("Something went Wrong!");
+                }
+            }).catch((error) => {
+                res.send("error : " + error);
+            })
+        }
+    }).catch((error) => {
+        res.send("error : " + error);
+    })
+}
