@@ -8,5 +8,6 @@ route.get('/viewResultByEnroll/:enrollNo', result.viewResultByEnroll);
 route.get('/viewResultByClass', result.viewResultByEnrollAndClass);
 route.get('/viewResultSemesterWise', result.viewResultSemesterWise);
 route.delete('/deleleResult', result.deleteResult)
+route.put('/updateResult', result.updateResult)
 
 module.exports = route

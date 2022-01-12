@@ -133,3 +133,39 @@ exports.deleteResult = (req, res) => {
         res.send("error : " + error);
     })
 }
+
+// Update Result
+exports.updateResult = (req, res) => {
+    db.result.findOne({
+        where: {
+            enrollNo: req.body.enrollNo,
+            class: req.body.class,
+            semester: req.body.semester
+        }
+    }).then((data) => {
+        if (!data) {
+            res.send("No data Found.");
+        } else {
+            db.result.update({
+                maths: req.body.maths,
+                science: req.body.science,
+                english: req.body.english
+            }, {
+                where: {
+                    enrollNo: data.enrollNo,
+                    class: data.class,
+                    semester: data.semester
+
+                }
+            }).then((updatedResult) => {
+                if(updatedResult) {
+                    res.send(updatedResult + " data updated!");
+                } else {
+                    res.send("Something went wrong!")
+                }
+            }).catch()
+        }
+    }).catch((error) => {
+        res.send("error : " + error);
+    })
+}
