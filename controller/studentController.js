@@ -176,7 +176,6 @@ exports.deleteStudent = (req, res) => {
             }).catch((error) => {
                 res.send("error : " + error);
             })
-
         }
     })
 }
