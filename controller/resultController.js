@@ -66,10 +66,12 @@ exports.viewResultByEnroll = (req, res) => {
 
 //view Result of a student classwise
 exports.viewResultByEnrollAndClass = (req, res) => {
+    console.log(req.query.classno)
+    console.log(req.query.enrollNo)
     db.result.findAll({
         where: {
-            class: req.body.class,
-            enrollNo: req.body.enrollNo
+            enrollNo: req.query.enrollNo,
+            class: req.query.classno
         }
     }).then((data) => {
         if (Object.keys(data).length === 0) {
@@ -86,9 +88,9 @@ exports.viewResultByEnrollAndClass = (req, res) => {
 exports.viewResultSemesterWise = (req, res) => {
     db.result.findOne({
         where: {
-            enrollNo: req.body.enrollNo,
-            class: req.body.class,
-            semester: req.body.semester
+            enrollNo: req.query.enrollNo,
+            class: req.query.classno,
+            semester: req.query.semester
         }
     }).then((data) => {
         if (!data) {
@@ -158,7 +160,7 @@ exports.updateResult = (req, res) => {
 
                 }
             }).then((updatedResult) => {
-                if(updatedResult) {
+                if (updatedResult) {
                     res.send(updatedResult + " data updated!");
                 } else {
                     res.send("Something went wrong!")

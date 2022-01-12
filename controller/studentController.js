@@ -67,18 +67,39 @@ exports.studentLogin = (req, res) => {
 
                     tokenfunc().then((token) => {
                         res.cookie("token", token, { httpOnly: true })
+                        res.cookie("enrollNo", data.dataValues.enrollNo)
                         res.status(200).render('index', { data: data.dataValues })
-                        console.log(data.dataValues)
+                        // console.log(data.dataValues);
                     })
 
                 } else {
                     res.json({
                         message: "Invalid Credential"
-                    })
+                    });
                 }
             })
         }
     })
+}
+
+exports.getresultLinks = (req, res) => {
+    // console.log(req.cookies.enrollNo)
+    res.render('resultLinks', { enrollNo: req.cookies.enrollNo });
+}
+
+exports.classResult = (req, res) => {
+    console.log(req.cookies.enrollNo)
+    res.render('classResult', { enrollNo: req.cookies.enrollNo });
+}
+
+exports.semesterResult = (req, res) => {
+    res.render('semesterResult', { enrollNo: req.cookies.enrollNo })
+}
+
+exports.logout = (req, res) => {
+    res.clearCookie("enrollNo");
+    res.clearCookie("token");
+    res.render('login')
 }
 
 // Get All Student
