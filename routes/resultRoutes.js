@@ -6,5 +6,7 @@ route.post('/addmarks', result.addmarks);
 route.get('/viewAllResults', result.viewAllResults);
 route.get('/viewResultByEnroll/:enrollNo', result.viewResultByEnroll);
 route.get('/viewResultByClass', result.viewResultByEnrollAndClass);
+route.get('/viewResultSemesterWise', result.viewResultSemesterWise);
+
 
 module.exports = route

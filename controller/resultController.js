@@ -82,3 +82,21 @@ exports.viewResultByEnrollAndClass = (req, res) => {
     })
 }
 
+// view result by enrollNo, class and semester
+exports.viewResultSemesterWise = (req, res) => {
+    db.result.findOne({
+        where: {
+            enrollNo: req.body.enrollNo,
+            class: req.body.class,
+            semester: req.body.semester
+        }
+    }).then((data) => {
+        if (!data) {
+            res.send('No data found')
+        } else {
+            res.send(data)
+        }
+    }).catch((error) => {
+        res.send("Error : " + error)
+    })
+}
