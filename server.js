@@ -11,7 +11,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/img', express.static(path.join(__dirname, 'assets/img/landing')))
 app.use(express.static(__dirname + '/public'));
 app.use('/uploads', express.static('uploads'));
-app.set('view engine', 'hbs')
+// app.set('view engine', 'hbs')
+app.set('view engine', 'ejs')
 app.use('/', studentRoutes);
 app.use('/', resultRoutes)
 

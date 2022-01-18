@@ -12,25 +12,25 @@
 
 <body>
     <div class="container mt-4">
-        <a href="/viewResultByEnroll/{{ enrollNo }}" class="btn btn-outline-primary m-3">View all Your Result</a>
+        <a href="/viewResultByEnroll/<%= enrollNo %>" class="btn btn-outline-primary m-3">View all Your Result</a>
         <a href="/classResult" class="btn btn-outline-primary m-3">Class Result</a>
         <a href="/semesterResult" class="btn btn-outline-primary m-3">Semester Wise Result</a>
-        <a href="/getStudentByEnroll/{{ enrollNo }}" class="btn btn-outline-primary m-3">View Your Profile</a>
+        <a href="/getStudentByEnroll/<%= enrollNo %>" class="btn btn-outline-primary m-3">View Your Profile</a>
         <a href="/index" class="btn btn-outline-primary m-3">LogOut</a>
     </div>
 
     <form method="get" action="/viewResultSemesterWise" class="m-5">
         <div class="mb-3">
-            enrollNo:-<input type="text" readonly class="form-control" name="enrollNo" value="{{enrollNo}}"
+            enrollNo:-<input type="text" readonly class="form-control" name="enrollNo" value="<%= enrollNo %>"
                 placeholder="class">
         </div>
         <div class="mb-3">
-            {{!-- <input type="text" name="classno"> --}}
+            <!-- {{!-- <input type="text" name="classno"> --}} -->
             <label for="exampleFormControlInput1" class="form-label">Class</label>
             <input type="number" class="form-control" name="classno" required placeholder="class" min="1" max="12">
         </div>
         <div class="mb-3">
-            {{!-- <input type="text" name="classno"> --}}
+            <!-- {{!-- <input type="text" name="classno"> --}} -->
             <label for="exampleFormControlInput1" class="form-label">Semester</label>
             <input type="number" class="form-control" name="semester" required placeholder="semester" min="1" max="2">
         </div>

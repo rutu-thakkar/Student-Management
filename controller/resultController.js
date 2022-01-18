@@ -57,7 +57,8 @@ exports.viewResultByEnroll = (req, res) => {
         if (Object.keys(data).length === 0) {
             res.send("No data Found");
         } else {
-            res.send(data)
+            console.log(data)
+            res.render('results', { data })
         }
     }).catch((error) => {
         res.send("error : " + error)

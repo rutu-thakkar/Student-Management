@@ -1,0 +1,57 @@
+<!-- {{!-- {{ data }} --}} -->
+<!-- 
+{{#each data }}
+
+{{.}}
+
+{{/each}} -->
+
+
+<div class="card bg-light mb-3" style="max-width: 18rem;">
+    <div class="card-header">RESULTS</div>
+    <div class="card-body">
+        <h5 class="card-title">
+            <table>
+                <thead>
+                    <th>Sr. No</th>
+                    <th>Class</th>
+                    <th>Semester</th>
+                    <th>MATHS</th>
+                    <th>SCIENCE</th>
+                    <th>ENGLISH</th>
+                    <th>TOTAL</th>
+                    <th>PERCENTAGE</th>
+                </thead>
+                <% for(var i=0; i < data.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= i+1 %>
+                        </td>
+                        <td>
+                            <%= data[i].class %>
+                        </td>
+                        <td>
+                            <%= data[i].semester %>
+                        </td>
+                        <td>
+                            <%= data[i].maths %>
+                        </td>
+                        <td>
+                            <%= data[i].science %>
+                        </td>
+                        <td>
+                            <%= data[i].english %>
+                        </td>
+                        <td>
+                            <%= data[i].maths + data[i].science + data[i].english %>
+                        </td>
+                        <td>
+                            <%= (data[i].maths + data[i].science + data[i].english)/3 %>
+                        </td>
+                    </tr>
+                    <% } %>
+        </h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+    </div>
+</div>
