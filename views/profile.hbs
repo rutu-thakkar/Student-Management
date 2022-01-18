@@ -11,10 +11,22 @@
 </head>
 
 <body>
+    <div class="d-flex flex-row">
+        <div class="d-flex flex-column">
+            <a class="btn btn-outline-primary p-5 m-5" id="viewprofile" href="/resultLinks">View Your
+                Result</a>
+        </div>
+        <div class="d-flex flex-column">
+            <a class="btn btn-outline-primary p-5 m-5" id="viewprofile" href="/index">LogOut</a>
+        </div>
+    </div>
 
     <div class="container">
         <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" value="{{ data.name }}">
+            <img src="../uploads/{{ data.image }} " width="60%" height="300px" style="border-radius: 30em;">
+        </div>
+        <div class="col-sm-10">
+            <input type="text" readonly class="ml-5 form-control-plaintext" value="{{ data.name }}">
         </div>
         <div class="col-sm-10">
             <input type="text" readonly class="form-control-plaintext" value="{{ data.enrollNo }}">

@@ -4,8 +4,9 @@ const bcrypt = require('bcrypt');
 const db = require('../models');
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
-
 app.use(cookieParser());
+
+
 
 exports.home = (req, res) => {
     res.render('login');
@@ -26,13 +27,15 @@ exports.studentRegister = (req, res) => {
                 message: "Enrollment No. already exist"
             })
         } else {
+            console.log(req.file)
             bcrypt.genSalt(10, (error, salt) => {
                 bcrypt.hash(req.body.password, salt, (error, hash) => {
                     const student = {
                         name: req.body.name,
                         enrollNo: req.body.enrollNo,
                         city: req.body.city,
-                        password: hash
+                        password: hash,
+                        image: req.file.filename
                     }
                     db.student.create(student).then((data) => {
                         if (Object.keys(data).length === 0) {
@@ -40,10 +43,18 @@ exports.studentRegister = (req, res) => {
                         } else {
                             res.send(data);
                         }
+                    }).catch((error) => {
+                        res.json({
+                            message: "Error : " + error
+                        })
                     });
                 });
             });
         }
+    }).catch((error) => {
+        res.json({
+            message: "Error"
+        })
     });
 }
 
