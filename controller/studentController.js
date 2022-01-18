@@ -41,7 +41,7 @@ exports.studentRegister = (req, res) => {
                         if (Object.keys(data).length === 0) {
                             res.send("oops! something went wrong, Not Inserted")
                         } else {
-                            res.send(data);
+                            res.redirect('/login');
                         }
                     }).catch((error) => {
                         res.json({
